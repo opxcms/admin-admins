@@ -118,8 +118,8 @@ class ManageAdminsListApiController extends APIListController
         if (
             !AdminAuthorization::can('admin_admins::view')
             && !AdminAuthorization::can('admin_admins::edit')
-            && !AdminAuthorization::can('admin_managers::disable')
-            && !AdminAuthorization::can('admin_managers::delete')
+            && !AdminAuthorization::can('admin_admins::disable')
+            && !AdminAuthorization::can('admin_admins::delete')
         ) {
             return null;
         }
