@@ -28,7 +28,7 @@ class ManageAdminEditApiController extends APIFormController
             return $this->returnNotAuthorizedResponse();
         }
 
-        $template = new Templater(AdminAdmins::path('Templates' . DIRECTORY_SEPARATOR . 'admin.php'));
+        $template = new Templater(AdminAdmins::path('Templates' . DIRECTORY_SEPARATOR . 'admin_add.php'));
 
         $template->fillDefaults();
 
@@ -81,7 +81,7 @@ class ManageAdminEditApiController extends APIFormController
             return $this->returnNotAuthorizedResponse();
         }
 
-        $template = new Templater(AdminAdmins::path('Templates' . DIRECTORY_SEPARATOR . 'admin.php'));
+        $template = new Templater(AdminAdmins::path('Templates' . DIRECTORY_SEPARATOR . 'admin_add.php'));
         $template->resolvePermissions();
         $template->fillValuesFromRequest($request);
 
