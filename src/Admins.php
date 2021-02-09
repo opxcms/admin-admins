@@ -73,9 +73,7 @@ class Admins extends BaseModule
     {
         $fileName = $this->getRepositoryFileName();
 
-        $admins = require $fileName;
-
-        return $admins;
+        return require $fileName;
     }
 
     /**

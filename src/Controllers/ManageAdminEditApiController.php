@@ -6,6 +6,7 @@ use Core\Foundation\Templater\Templater;
 use Core\Http\Controllers\APIFormController;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Modules\Admin\Admins\AdminAdmins;
 use Modules\Admin\Authorization\AdminAuthorization;
 
@@ -186,12 +187,13 @@ class ManageAdminEditApiController extends APIFormController
     /**
      * Fill template with data.
      *
-     * @param string $filename
      * @param array $admin
+     *
+     * @param string $filename
      *
      * @return  Templater
      */
-    protected function makeTemplate(array $admin, $filename): Templater
+    protected function makeTemplate(array $admin, string $filename): Templater
     {
         $template = new Templater(AdminAdmins::path('Templates' . DIRECTORY_SEPARATOR . $filename));
 
@@ -216,7 +218,7 @@ class ManageAdminEditApiController extends APIFormController
         if (isset($data['password'])) {
             $data['password'] = bcrypt($data['password']);
         } else if ($new) {
-            $data['password'] = bcrypt(str_random(8));
+            $data['password'] = bcrypt(Str::random(8));
         } else {
             unset($data['password']);
         }
